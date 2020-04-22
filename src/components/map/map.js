@@ -3,12 +3,15 @@ import GoodleMapReact from 'google-map-react';
 import { API } from '../../constants';
 
 const markersArr = [
-    {type: 'puppy', lan: 50.27, lng: 30.30},
-    {type: 'nursery', lan: 50.28, lng: 30.31},
-    {type: 'help', lan: 50.26, lng: 30.29},
-    {type: 'help', lan: 50.25, lng: 30.28},
-    {type: 'shop', lan: 50.29, lng: 30.32},
-    {type: 'veterinary', lan: 50.24, lng: 30.27}
+    {type: 'puppy', lan: 50.47, lng: 30.50},
+    {type: 'nursery', lan: 50.48, lng: 30.61},
+    {type: 'help', lan: 50.46, lng: 30.52},
+    {type: 'help', lan: 50.45, lng: 30.63},
+    {type: 'shop', lan: 50.49, lng: 30.44},
+    {type: 'veterinary', lan: 50.44, lng: 30.55},
+    {type: 'puppy', lan: 55.6, lng: 37.7},
+    {type: 'nursery', lan: 55.7, lng: 37.5},
+    {type: 'help', lan: 55.8, lng: 37.8},
 ]
 
 const Marker = ({ text }) => (
