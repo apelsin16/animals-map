@@ -26,7 +26,7 @@ function App() {
         <Button text=">" type='arrow' />
         <Button text="Добавить" type='new' />
         <Button text="Сообщения" type='mail' badge={true}/>
-        { modalOpen ? <ModalRegistration /> : null }
+        { modalOpen ? <ModalRegistration handleClick={toggleModal} /> : null }
     </div>
   );
 }
