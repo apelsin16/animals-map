@@ -3,11 +3,11 @@ const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const path = require("path");
 
 module.exports = {
-    devtool: 'source-map',
+    devtool: 'cheap-eval-source-map',
     entry: "./src/index.js",
     output: {
         path: path.resolve(__dirname, './dist'),
-        filename: '[name].[contanthash].js'
+        filename: '[name].js'
     },
     optimization: {
         moduleIds: 'hashed',
@@ -27,7 +27,9 @@ module.exports = {
         compress: true,
         port: 3000,
         watchContentBase: true,
-        progress: true
+        progress: true,
+        clientLogLevel: 'warning',
+        stats: 'errors-only',
     },
     module: {
         rules: [

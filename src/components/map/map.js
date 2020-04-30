@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import GoodleMapReact from 'google-map-react';
 import { API } from '../../constants';
+import home from './location.svg';
 
 const markersArr = [
     {type: 'puppy', lan: 50.47, lng: 30.50},
@@ -14,19 +15,20 @@ const markersArr = [
     {type: 'help', lan: 55.8, lng: 37.8},
 ]
 
-const Marker = ({ text }) => (
+const Marker = ({ text, img }) => (
     <div style={{
-        color: 'white',
-        background: 'pink',
-        padding: '15px 10px',
+        // color: 'white',
+        // background: 'pink',
+        // padding: '15px 10px',
+        width: '35px',
         display: 'inline-flex',
-        textAlign: 'center',
-        alignItems: 'center',
-        justifyContent: 'center',
-        borderRadius: '100%',
+        // textAlign: 'center',
+        // alignItems: 'center',
+        // justifyContent: 'center',
+        // borderRadius: '100%',
         transform: 'translate(-50%, -50%)'
 }}>
-{text}
+{text ? text : <img src={img} alt="Marker"/>}
 </div>
 );
 
@@ -37,9 +39,13 @@ export default class ReactMap extends Component {
             lng: null
         },
         zoom: 11
-    }
+    };
 
     componentDidMount() {
+        this.getPosition()
+    }
+
+    getPosition() {
         navigator.geolocation.getCurrentPosition(position => {
             this.setState({
                 center: {
@@ -53,24 +59,26 @@ export default class ReactMap extends Component {
     render() {
         return (
             <div style={{ height: '100vh', width: '100%' }}>
-    <GoodleMapReact
-        bootstrapURLKeys={{
-            key: API,
-        }}
-        defaultZoom={this.state.zoom}
-        defaultCenter={this.state.center}
-            >
-        {markersArr.map((el, idx) => {
-            return (
-                <Marker key={idx}
-                    lat={el.lan}
-                    lng={el.lng}
-                    text={el.type}
-                />
-            )
-        })}
+                <GoodleMapReact
+                    bootstrapURLKeys={{
+                        key: API,
+                    }}
+                    defaultZoom={this.state.zoom}
+                    center={this.state.center}
+                        >
 
-        </GoodleMapReact>
-        </div>)
+                    {markersArr.map((el, idx) => {
+                        return (
+                            <Marker key={idx}
+                                lat={el.lan}
+                                lng={el.lng}
+                                text={el.type}
+                            />
+                        )
+                    })}
+                    <Marker lat={this.state.center.lat} img={home} lng={this.state.center.lng} />
+                </GoodleMapReact>
+            </div>
+        )
     }
 }
