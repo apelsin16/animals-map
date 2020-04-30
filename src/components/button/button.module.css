@@ -1,7 +1,6 @@
 .button {
     position: absolute;
     background-color: darkslateblue;
-    width: 150px;
     z-index: 2;
     height: 40px;
     border: none;
@@ -25,7 +24,7 @@
 }
 
 .cats {
-    left: 190px;
+    left: 120px;
     top: 20px;
 }
 

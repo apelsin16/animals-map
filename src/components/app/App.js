@@ -55,37 +55,19 @@ class App extends Component {
         const { modalOpen, center, zoom } = this.state;
         return (
             <div className="App">
-                {/*<GoodleMapReact*/}
-                {/*    bootstrapURLKeys={{*/}
-                {/*        key: API,*/}
-                {/*    }}*/}
-                {/*    defaultZoom={zoom}*/}
-                {/*    center={center}*/}
-                {/*>*/}
 
-                {/*    {markersArr.map((el, idx) => {*/}
-                {/*        return (*/}
-                {/*            <Marker key={idx}*/}
-                {/*                    lat={el.lan}*/}
-                {/*                    lng={el.lng}*/}
-                {/*                    text={el.type}*/}
-                {/*            />*/}
-                {/*        )*/}
-                {/*    })}*/}
-                {/*    /!*<Marker lat={center.lat} img={home} lng={center.lng} />*!/*/}
-                {/*</GoodleMapReact>*/}
                 <ReactMap />
-                {/*<Button text="Кошки" type='dogs'/>*/}
-                {/*<Button text="Собаки" type='cats' />*/}
-                {/*<select className={styles.select}>*/}
-                {/*    <option>Порода 1</option>*/}
-                {/*    <option>Порода 2</option>*/}
-                {/*    <option>Порода 3</option>*/}
-                {/*</select>*/}
-                {/*<Button text='Регистрация' type='register' handleClick={this.toggleModal} />*/}
-                {/*<Button text=">" type='arrow' />*/}
-                {/*<Button text="Добавить" type='new' />*/}
-                {/*<Button text="Сообщения" type='mail' badge={true}/>*/}
+                <Button text="Кошки" type='dogs'/>
+                <Button text="Собаки" type='cats' />
+                <select className={styles.select}>
+                    <option>Порода 1</option>
+                    <option>Порода 2</option>
+                    <option>Порода 3</option>
+                </select>
+                <Button text='Регистрация' type='register' handleClick={this.toggleModal} />
+                <Button text=">" type='arrow' />
+                <Button text="Добавить" type='new' />
+                <Button text="Сообщения" type='mail' badge={true}/>
                 { modalOpen ? <ModalRegistration handleClick={this.toggleModal} /> : null }
             </div>
         );
