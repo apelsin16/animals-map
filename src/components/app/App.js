@@ -3,10 +3,14 @@ import ReactMap from "../map/map";
 import Button from "../button/button";
 import styles from './app.module.css';
 import ModalRegistration from "../modal/modal";
+import dogs from '../../data_dogs';
+import cats from '../../data_cats';
 
 class App extends Component {
     state = {
-       modalOpen: false
+        modalOpen: false,
+        dogsSelected: true,
+        catsSelected: false
     };
 
     toggleModal = (e) => {
@@ -15,19 +19,35 @@ class App extends Component {
         this.setState({
             modalOpen: !this.state.modalOpen,
         });
-    }
+    };
+
+    dogsSelect = (e) => {
+        e.preventDefault();
+        this.setState({
+            dogsSelected: true,
+            catsSelected: false
+        })
+    };
+
+    catsSelect = (e) => {
+        e.preventDefault();
+        this.setState({
+            dogsSelected: false,
+            catsSelected: true
+        })
+    };
+
     render() {
-        const { modalOpen } = this.state;
+        const { modalOpen, dogsSelected } = this.state;
         return (
             <div className="App">
-
                 <ReactMap />
-                <Button text="Кошки" type='dogs'/>
-                <Button text="Собаки" type='cats' />
+                <Button text="Кошки" type='dogs' handleClick={this.catsSelect}/>
+                <Button text="Собаки" type='cats' handleClick={this.dogsSelect} />
                 <select className={styles.select}>
-                    <option>Порода 1</option>
-                    <option>Порода 2</option>
-                    <option>Порода 3</option>
+                    {Object.values(dogsSelected ? dogs : cats).map( el =>
+                        <option key={el.img}>{el.ru}</option>
+                    )}
                 </select>
                 <Button text='Регистрация' type='register' handleClick={this.toggleModal} />
                 <Button text=">" type='arrow' />
